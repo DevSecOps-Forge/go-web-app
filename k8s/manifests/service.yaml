@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: go-web-app-svc
+  labels:
+    app: go-web-app
+spec:
+  selector:
+    app: go-web-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
+# The service.yaml file defines a Service object that exposes the go-web-app Deployment to the internet. The Service object listens on port 80 and forwards traffic to port 8080 on the go-web-app Pods. The type: LoadBalancer field tells Kubernetes to provision a cloud load balancer for the Service. This will allow external users to access the go-web-app Pods through the load balancer's public IP address.
